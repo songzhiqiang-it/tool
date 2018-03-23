@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<classPathEntry	location="ojdbc8.jar"/>
+	<context id="Mysql"	targetRuntime="MyBatis3" defaultModelType="flat">
+		<commentGenerator>
+			<property name="suppressDate" value="true"/>
+			
+			<property name="suppressAllComments" value="true"/>
+		</commentGenerator>
+		
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" 
+		connectionURL="jdbc:oracle:thin:@192.168.22.50:1521:oracle12c"
+		userId="market_data" password="market_data">
+		  <property name="remarksReporting" value="true"></property>
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="true"/>
+		</javaTypeResolver>
+		
+		<javaModelGenerator targetPackage="com.rquest.riskmaster.entity130" targetProject="src">
+			<property name="enableSubPackages" value="true"/>
+			<property name="trimStrings" value="true"/>
+		</javaModelGenerator>
+		
+		<sqlMapGenerator targetPackage="mapping" targetProject="src">
+			<property name="enableSubPackages" value="true"/>
+		</sqlMapGenerator>
+		
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.rquest.riskmaster.mapper130" targetProject="src">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+		
+		
+		
+		<table tableName="BOND_INDEXS" domainObjectName="BondIndexs" enableCountByExample="false" enableUpdateByExample="false" 
+		enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>	
+		
+		
+		
+					
+					
+
+	
+		
+		
+	</context>
+</generatorConfiguration>

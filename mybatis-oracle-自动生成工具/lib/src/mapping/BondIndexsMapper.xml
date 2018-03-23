@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rquest.riskmaster.mapper130.BondIndexsMapper" >
+  <resultMap id="BaseResultMap" type="com.rquest.riskmaster.entity130.BondIndexs" >
+    <id column="ID_INSTRUMENT" property="idInstrument" jdbcType="VARCHAR" />
+    <result column="CD_SYMBOL" property="cdSymbol" jdbcType="VARCHAR" />
+    <result column="NAME_INDEX" property="nameIndex" jdbcType="VARCHAR" />
+    <result column="CD_EXCHANGE" property="cdExchange" jdbcType="VARCHAR" />
+    <result column="TIMESTAMP" property="timestamp" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID_INSTRUMENT, CD_SYMBOL, NAME_INDEX, CD_EXCHANGE, TIMESTAMP
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BOND_INDEXS
+    where ID_INSTRUMENT = #{idInstrument,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BOND_INDEXS
+    where ID_INSTRUMENT = #{idInstrument,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.rquest.riskmaster.entity130.BondIndexs" >
+    insert into BOND_INDEXS (ID_INSTRUMENT, CD_SYMBOL, NAME_INDEX, 
+      CD_EXCHANGE, TIMESTAMP)
+    values (#{idInstrument,jdbcType=VARCHAR}, #{cdSymbol,jdbcType=VARCHAR}, #{nameIndex,jdbcType=VARCHAR}, 
+      #{cdExchange,jdbcType=VARCHAR}, #{timestamp,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rquest.riskmaster.entity130.BondIndexs" >
+    insert into BOND_INDEXS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idInstrument != null" >
+        ID_INSTRUMENT,
+      </if>
+      <if test="cdSymbol != null" >
+        CD_SYMBOL,
+      </if>
+      <if test="nameIndex != null" >
+        NAME_INDEX,
+      </if>
+      <if test="cdExchange != null" >
+        CD_EXCHANGE,
+      </if>
+      <if test="timestamp != null" >
+        TIMESTAMP,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idInstrument != null" >
+        #{idInstrument,jdbcType=VARCHAR},
+      </if>
+      <if test="cdSymbol != null" >
+        #{cdSymbol,jdbcType=VARCHAR},
+      </if>
+      <if test="nameIndex != null" >
+        #{nameIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="cdExchange != null" >
+        #{cdExchange,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null" >
+        #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rquest.riskmaster.entity130.BondIndexs" >
+    update BOND_INDEXS
+    <set >
+      <if test="cdSymbol != null" >
+        CD_SYMBOL = #{cdSymbol,jdbcType=VARCHAR},
+      </if>
+      <if test="nameIndex != null" >
+        NAME_INDEX = #{nameIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="cdExchange != null" >
+        CD_EXCHANGE = #{cdExchange,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamp != null" >
+        TIMESTAMP = #{timestamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID_INSTRUMENT = #{idInstrument,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rquest.riskmaster.entity130.BondIndexs" >
+    update BOND_INDEXS
+    set CD_SYMBOL = #{cdSymbol,jdbcType=VARCHAR},
+      NAME_INDEX = #{nameIndex,jdbcType=VARCHAR},
+      CD_EXCHANGE = #{cdExchange,jdbcType=VARCHAR},
+      TIMESTAMP = #{timestamp,jdbcType=TIMESTAMP}
+    where ID_INSTRUMENT = #{idInstrument,jdbcType=VARCHAR}
+  </update>
+</mapper>
